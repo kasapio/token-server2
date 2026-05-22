@@ -8,38 +8,6 @@
 
 <h1>Witaj</h1>
 
-<script>
-(async function() {
-
-  const token = new URLSearchParams(location.search).get("token");
-
-  if (!token) {
-    document.body.innerHTML = "<h1>Brak dostępu</h1>";
-    return;
-  }
-
-  try {
-
-    const res = await fetch(
-      "https://token-server.superkrispz8.workers.dev/?token=" + token
-    );
-
-    if (!res.ok) {
-      document.body.innerHTML = "<h1>Niepoprawny token</h1>";
-      return;
-    }
-
-    // pokaż stronę
-   <body style="display:none;">
-
-  } catch (err) {
-
-    document.body.innerHTML = "<h1>Błąd połączenia</h1>";
-
-  }
-
-})();
-</script>
 
     <style>
         /* Nowoczesne czcionki */
@@ -883,6 +851,42 @@
     </style>
 </head>
 <body style="display:none;">
+    <script>
+(async function() {
+
+  const token = new URLSearchParams(location.search).get("token");
+
+  if (!token) {
+    document.body.innerHTML = "<h1>Brak dostępu</h1>";
+    return;
+  }
+
+  try {
+
+    const res = await fetch(
+      "https://token-server.superkrispz8.workers.dev/?token=" + token
+    );
+
+    if (!res.ok) {
+      document.body.innerHTML = "<h1>Niepoprawny token</h1>";
+      return;
+    }
+
+    // usuń token z URL
+    window.history.replaceState({}, document.title, "/index.html");
+
+    // pokaż stronę
+    document.body.style.display = "block";
+
+  } catch (err) {
+
+    document.body.innerHTML = "<h1>Błąd połączenia</h1>";
+
+  }
+
+})();
+</script>
+    
 
     <canvas id="particles-canvas"></canvas>
 
