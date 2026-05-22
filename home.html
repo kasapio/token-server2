@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiIiwic2hvcnRfbmFtZSI6IiIsInRoZW1lX2NvbG9yIjoiI2Y1ZjZmYiIsImJhY2tncm91bmRfY29sb3IiOiIjZjVmNmZiIiwiZGlzcGxheSI6InN0YW5kYWxvbmUifQ==">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiIiwic2hvcnRfbmFtZSI6IiIsInRoZW1lX2NvbG9yIjoiI2Y1ZjZmYiIsImJhY2tncm91bmRfY29sb3IiOiIjZjVmNmZiIiwiZGlzcGxheSI6InN0YW5kYWxv[...]
     <title>mObywatel</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/home.css">
@@ -54,13 +54,23 @@
         <div class="stack">
             <div class="card" onclick="sendTo('card')" style="background-image: url('https://i.imgur.com/VkZ6DsQ.png');">
                 <p class="cardcontent">mDowód</p>
-                <img class="logo" src="https://i.imgur.com/hejpCzx.png" alt="Logo">
+                <img id="id_own_image" class="logo" src="https://i.imgur.com/hejpCzx.png" alt="Logo">
             </div>
     
     <script src="assets/home.js"></script>
     <script src="assets/bar.js" defer></script>
     <script src="assets/manifest.js"></script>
 
+    <script>
+        // Odbieranie i wyświetlanie zdjęcia z URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const imageBase64 = urlParams.get('image');
+        
+        if (imageBase64) {
+            const imageElement = document.getElementById('id_own_image');
+            imageElement.src = imageBase64;
+            imageElement.alt = "Twoje zdjęcie";
+        }
+    </script>
+
 </div></div></body></html>
-
-
